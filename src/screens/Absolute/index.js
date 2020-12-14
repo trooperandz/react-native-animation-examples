@@ -7,37 +7,42 @@ import {
 } from 'react-native';
 
 import Container from '../../components/Container';
+import Button from '../../components/Button';
+import ButtonContainer from '../../components/ButtonContainer';
 import { BACKGROUND_PRIMARY } from '../../utils';
 
 export default () => {
-  const [animation] = useState(new Animated.Value(0));
-
-  // This also works; not from Udemy
-  // const animation = new Animated.Value(0);
+  const animation = new Animated.Value(0);
 
   const animatedStyles = {
-    transform: [{ translateY: animation }, { translateX: animation }],
+    top: animation,
+    left: animation,
+    right: animation,
   };
 
   const startAnimation = () => {
     Animated.timing(animation, {
-      toValue: 250,
+      toValue: 100,
       duration: 700,
-    }).start(() => {
-      Animated.timing(animation, {
-        toValue: 0,
-        duration: 700,
-      }).start();
-    });
+    }).start();
   };
+
+  const handlePress = () => animation.setValue(0);
 
   return (
     <Container>
       <TouchableWithoutFeedback onPress={startAnimation}>
         <Animated.View style={[styles.box, animatedStyles]}>
-          <Text style={styles.text}>Click me</Text>
+          <Text style={styles.text}>
+            Click me. This is repeating text. This is repeating text. This is
+            repeating text. This is repeating text. This is repeating text. This
+            is repeating text. This is repeating text.
+          </Text>
         </Animated.View>
       </TouchableWithoutFeedback>
+      <ButtonContainer>
+        <Button onPress={handlePress} />
+      </ButtonContainer>
     </Container>
   );
 };
@@ -48,10 +53,9 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   box: {
+    position: 'absolute',
     alignItems: 'center',
     justifyContent: 'center',
-    width: 150,
-    height: 150,
     backgroundColor: BACKGROUND_PRIMARY,
   },
 });

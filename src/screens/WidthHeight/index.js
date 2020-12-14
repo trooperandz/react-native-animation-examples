@@ -8,7 +8,9 @@ import {
 } from 'react-native';
 
 import Container from '../../components/Container';
-import { COLOR_PRIMARY } from '../../utils';
+import Button from '../../components/Button';
+import ButtonContainer from '../../components/ButtonContainer';
+import { BACKGROUND_PRIMARY } from '../../utils';
 
 export default () => {
   const animation = new Animated.Value(150);
@@ -24,6 +26,8 @@ export default () => {
     }).start();
   };
 
+  const handlePress = () => animation.setValue(150);
+
   return (
     <Container>
       <TouchableWithoutFeedback onPress={startAnimation}>
@@ -32,6 +36,9 @@ export default () => {
         </Animated.View>
       </TouchableWithoutFeedback>
       <View style={[styles.box, styles.box2]} />
+      <ButtonContainer>
+        <Button onPress={handlePress} />
+      </ButtonContainer>
     </Container>
   );
 };
@@ -42,7 +49,7 @@ const styles = StyleSheet.create({
     height: 150,
   },
   box1: {
-    backgroundColor: COLOR_PRIMARY,
+    backgroundColor: BACKGROUND_PRIMARY,
   },
   box2: {
     backgroundColor: 'gray',

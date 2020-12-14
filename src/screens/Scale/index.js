@@ -4,10 +4,13 @@ import {
   StyleSheet,
   Text,
   TouchableWithoutFeedback,
+  View,
 } from 'react-native';
 
 import Container from '../../components/Container';
-import { COLOR_PRIMARY } from '../../utils';
+import Button from '../../components/Button';
+import ButtonContainer from '../../components/ButtonContainer';
+import { BACKGROUND_PRIMARY } from '../../utils';
 
 export default () => {
   const animation = new Animated.Value(1);
@@ -28,6 +31,8 @@ export default () => {
     }).start();
   };
 
+  const handlePress = () => animation.setValue(1);
+
   return (
     <Container>
       <TouchableWithoutFeedback onPress={startAnimation}>
@@ -35,6 +40,9 @@ export default () => {
           <Text style={styles.text}>Click me</Text>
         </Animated.View>
       </TouchableWithoutFeedback>
+      <ButtonContainer>
+        <Button onPress={handlePress} />
+      </ButtonContainer>
     </Container>
   );
 };
@@ -48,6 +56,6 @@ const styles = StyleSheet.create({
     width: 150,
     height: 150,
     padding: 24,
-    backgroundColor: COLOR_PRIMARY,
+    backgroundColor: BACKGROUND_PRIMARY,
   },
 });

@@ -8,6 +8,7 @@ const App = () => {
   useEffect(() => {
     LogBox.ignoreLogs(['Animated: `useNativeDriver`']);
   }, []);
+
   return (
     <>
       <StatusBar barStyle="dark-content" />

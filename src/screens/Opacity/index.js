@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 
 import Container from '../../components/Container';
-import { COLOR_PRIMARY } from '../../utils';
+import { BACKGROUND_PRIMARY } from '../../utils';
 
 export default () => {
   const [animation] = useState(new Animated.Value(1));
@@ -53,6 +53,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     width: 150,
     height: 150,
-    backgroundColor: COLOR_PRIMARY,
+    backgroundColor: BACKGROUND_PRIMARY,
   },
 });
